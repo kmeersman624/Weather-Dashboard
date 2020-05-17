@@ -33,46 +33,33 @@
             <button class="btn btn-primary" id="searchbtn" type="submit">
               <i class="fas fa-search"></i>
             </button>
-
+            <div id="buttons-view"></div>
               <!--previous search buttons here-->
             </div>
           </div>
           <div class="col-md-8" id="data">
             <!--weather data-->
-            <h2 class="citydate" id="date"></h2>
-            <p class="city"></p>
-            <p class="temp"></p>
-            <p class="wind"></p>
-            <p class="uv"></p>
-          </p>
-        </div>
+            <h2 class="citydate"></h2><h2 id="date"></h2>
+            <h2 id="currentimg"></h2>
+             <p class="temp"></p>
+             <p class="humidity"></p>
+             <p class="wind"></p>
+             <p class="uv"></p>
+          </div>
       </div>
-      <div class="row">
-        <div class="col-md-8" id="5day">
+          <div class="col-md-8" id="5day">
           <!--5 day forecast-->
-          <h3 id="5day">5-Day Forcast:</h3>
-        </div>
-      </div>
+           <h3 id="5day">5-Day Forecast:</h3>
+          </div>
     </div>
   </div>
 </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </body>
 </html>
