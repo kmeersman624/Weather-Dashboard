@@ -58,17 +58,19 @@ function getWeather(city) {
     getWeather(city);
     previousCities.push(city);
     getStorage();
+    renderButtons();
   })
   //save to local storage
   function getStorage() {
     //send previous cities array to local storage
-    localStorage.setItem("previousCities", previousCities);
+    localStorage.setItem("history", JSON.stringify(previousCities));
   };
   
   // local storage to return buttons from recent city searches
 function renderButtons() {
     $("#buttons-view").empty();
-    previousCities = localStorage.getItem("previousCities");
+    previousCities = JSON.parse(localStorage.getItem("history"));
+    console.log(localStorage.getItem("history"));
     for (i = 0; i < previousCities.length; i++) {
       var a =$("<button>");
       a.addClass("previousCity");
@@ -79,6 +81,10 @@ function renderButtons() {
   }
 }
 
+$(".previousCity").on("click", function () {
+  $(this).attr("data-city");
+  getWeather();
+});
 
 //5 day weather forecast
 function fiveDayForecast(city) {
