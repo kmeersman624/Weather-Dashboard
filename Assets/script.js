@@ -25,9 +25,9 @@ function getWeather(city) {
      $(".citydate").html(response.name);
    // Convert the temp to fahrenheit
     var temp = (response.main.temp - 273.15) * 1.80 + 32;
-    // var icon = $("<img>").attr("src","http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+    var icon = $("<img>").attr("src","http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
   //  // add content to html
-    //  $("#currentimg").append(icon);
+     $("#currentimg").append(icon);
      $(".temp").text("Temperature: " + temp.toFixed(2) + "°F");
      $(".humidity").text("Humidity: " + response.main.humidity +"%");
      $(".wind").text("Wind Speed: " + response.wind.speed + "MPH");
@@ -110,16 +110,43 @@ function fiveDayForecast(city) {
     }).then(function (response) {
       console.log(response);
       $("#5day").html(response);
-      for (var i = 0; i < response.list.length; i += 8) {
-      var column = $("<div>").addClass("col-md-2").appendTo("#5day");
-      //generate cards for each day
+      for (var i = 0; i < response.list.length; i++) {
+       if (response.list[i].dt_txt.indexOf("12:00:00") !== -1) {
+        
+        var column = $("<div>").addClass("col-md-2");
+        var temp = (response.list[i].main.temp - 273.15) * 1.80 + 32;
+        var icon = $("<img>").attr("src","http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
+        $(".5date").text(response.list[i].dt_txt);
+        $(".5currentimg").append(icon);
+        $(".5temp").text("Temp: " + temp.toFixed(2) + "°F");
+        $(".5humidity").text("Humidity: " + response.list[i].main.humidity +"%");
 
-      //pull data for cards
-      response.list[i].dt_txt
-      response.list[i].weather[0].icon;
-      response.list[i].main.temp;
-      response.list[i].main.humidity;
+        // var card = $("<div>")
+        // card.addClass("card")
+        // var div = $("<div>")
+        // div.addClass("card-body")
+        // var cardTitleDiv = $("<div>")
+        // cardTitleDiv.addClass("card-title")
+        // var cardTextDiv = $("<div>")
+        // cardTextDiv.addClass("card-text")
+
+        // cardTitleDiv.append(response.list[i].dt_txt)
+        // cardTextDiv.append(icon)
+        // cardTextDiv.append(temp)
+        // div.append(cardTitleDiv)
+        // div.append(cardTextDiv)
+        // card.append(div)
+        // column.append(card)
+        
+        //pull data for cards
+        // response.list[i].dt_txt
+        // response.list[i].weather[0].icon;
+        // response.list[i].main.temp;
+        // response.list[i].main.humidity;
+       
+       column.appendTo("#5day")
       }
+    }
     })
 }
 

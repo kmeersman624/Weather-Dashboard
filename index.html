@@ -37,9 +37,8 @@
             <!--previous search buttons here-->
           </div>
         </aside>
-      </div>
         <main class="col-md-8" id="data">
-        <!--weather data-->
+          <!--weather data-->
           <h2 class="citydate"></h2>
           <h2 id="date"></h2>
           <h2 id="currentimg"></h2>
@@ -47,13 +46,18 @@
           <p class="humidity"></p>
           <p class="wind"></p>
           <p class="uv"></p>
+          <div class="row">
+            <div class="col-md-8">
+              <!--5 day forecast-->
+              <div class="row" id="5day"></div>
+                  <p class="5date"></p>
+                  <p class="5currentimg"></p>
+                  <p class="5temp"></p>
+                  <p class="5humidity"></p>
+            </div>
+          </div>
         </main>
-    <div class="row">
-        <div class="col-md-8" id="5day">
-        <!--5 day forecast-->
-        <h3 id="5day"></h3>
       </div>
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script
