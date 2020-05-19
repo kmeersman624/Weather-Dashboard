@@ -8,7 +8,7 @@ This application is built to retrieve data from the OpenWeather API to use for t
 
 ## Images
 
-![Image of Dashboard]()
+![Image of Dashboard](assets\weather.PNG)
 
 ## Usage
 
