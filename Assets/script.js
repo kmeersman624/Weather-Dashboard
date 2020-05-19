@@ -25,7 +25,9 @@ function getWeather(city) {
      $(".citydate").html(response.name);
    // Convert the temp to fahrenheit
     var temp = (response.main.temp - 273.15) * 1.80 + 32;
-   // add temp content to html
+    // var icon = $("<img>").attr("src","http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+  //  // add content to html
+    //  $("#currentimg").append(icon);
      $(".temp").text("Temperature: " + temp.toFixed(2) + "°F");
      $(".humidity").text("Humidity: " + response.main.humidity +"%");
      $(".wind").text("Wind Speed: " + response.wind.speed + "MPH");
@@ -48,6 +50,18 @@ function getWeather(city) {
       var uv = uvResponse.value;
       console.log(uvResponse);
       $(".uv").html("UV Index: " + uv);
+
+      if (uv < 3) {
+        $(".uv").css('background-color', 'green');
+      } else if (uv < 6) {
+        $(".uv").css('background-color', 'yellow');
+      } else if (uv < 8) {
+        $(".uv").css('background-color', 'orange');
+      } else if (uv < 11) {
+        $(".uv").css('background-color', 'red');
+      } else {
+        $(".uv").css('background-color', 'violet');
+      }
         });
   }
   
@@ -59,6 +73,7 @@ function getWeather(city) {
     previousCities.push(city);
     getStorage();
     renderButtons();
+    fiveDayForecast(city);
   })
   //save to local storage
   function getStorage() {
@@ -72,29 +87,39 @@ function renderButtons() {
     previousCities = JSON.parse(localStorage.getItem("history"));
     console.log(localStorage.getItem("history"));
     for (i = 0; i < previousCities.length; i++) {
-      var a =$("<button>");
-      a.addClass("previousCity");
-      a.attr("data-city", previousCities[i]);
-      a.text(previousCities[i]);
-      $("#buttons-view").append(a);
-      console.log(a);
+      var li =$("<li>");
+      li.addClass("previousCity");
+      li.attr("data-city", previousCities[i]);
+      li.text(previousCities[i]);
+      $("#buttons-view").append(li);
+      console.log(li);
   }
 }
 
-$(".previousCity").on("click", function () {
-  $(this).attr("data-city");
-  getWeather();
+$("#buttons-view").on("click", "li", function () {
+  var previousCity = $(this).attr("data-city");
+  getWeather(previousCity);
 });
 
 //5 day weather forecast
 function fiveDayForecast(city) {
-  var city = $("#searchinput").val();  
-  var queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=8ca043bed56f54032777742c195f1b73";
+  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=8ca043bed56f54032777742c195f1b73";
   $.ajax({
     url: queryURL,
         method: "GET"
     }).then(function (response) {
+      console.log(response);
+      $("#5day").html(response);
+      for (var i = 0; i < response.list.length; i += 8) {
+      var column = $("<div>").addClass("col-md-2").appendTo("#5day");
+      //generate cards for each day
 
+      //pull data for cards
+      response.list[i].dt_txt
+      response.list[i].weather[0].icon;
+      response.list[i].main.temp;
+      response.list[i].main.humidity;
+      }
     })
 }
 

@@ -3,3 +3,10 @@
     color: white;
     text-align: center;
 }
+.uv {
+    width: fit-content;
+}
+#data {
+    float: right;
+    padding: 5px;
+}
