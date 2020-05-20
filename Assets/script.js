@@ -116,10 +116,10 @@ function fiveDayForecast(city) {
         var column = $("<div>").addClass("col-md-2");
         var temp = (response.list[i].main.temp - 273.15) * 1.80 + 32;
         var icon = $("<img>").attr("src","http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
-        $(".5date").text(response.list[i].dt_txt);
-        $(".5currentimg").append(icon);
-        $(".5temp").text("Temp: " + temp.toFixed(2) + "°F");
-        $(".5humidity").text("Humidity: " + response.list[i].main.humidity +"%");
+        $("#5date").append("<br>" + response.list[i].dt_txt);
+        $("#5currentimg").append(icon);
+        $("#5temp").append("<br>" + "Temp: " + temp.toFixed(2) + "°F");
+        $("#5humidity").append("<br>" + "Humidity: " + response.list[i].main.humidity +"%");
 
         // var card = $("<div>")
         // card.addClass("card")
