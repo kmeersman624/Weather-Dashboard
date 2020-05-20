@@ -121,29 +121,6 @@ function fiveDayForecast(city) {
         $("#5temp").append("<br>" + "Temp: " + temp.toFixed(2) + "°F");
         $("#5humidity").append("<br>" + "Humidity: " + response.list[i].main.humidity +"%");
 
-        // var card = $("<div>")
-        // card.addClass("card")
-        // var div = $("<div>")
-        // div.addClass("card-body")
-        // var cardTitleDiv = $("<div>")
-        // cardTitleDiv.addClass("card-title")
-        // var cardTextDiv = $("<div>")
-        // cardTextDiv.addClass("card-text")
-
-        // cardTitleDiv.append(response.list[i].dt_txt)
-        // cardTextDiv.append(icon)
-        // cardTextDiv.append(temp)
-        // div.append(cardTitleDiv)
-        // div.append(cardTextDiv)
-        // card.append(div)
-        // column.append(card)
-        
-        //pull data for cards
-        // response.list[i].dt_txt
-        // response.list[i].weather[0].icon;
-        // response.list[i].main.temp;
-        // response.list[i].main.humidity;
-       
        column.appendTo("#5day")
       }
     }
