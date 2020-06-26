@@ -126,21 +126,37 @@ function fiveDayForecast(city) {
     for (var i = 0; i < response.list.length; i++) {
       if (response.list[i].dt_txt.indexOf("12:00:00") !== -1) {
         var column = $("<div>").addClass("col-md-2");
-        var temp = (response.list[i].main.temp - 273.15) * 1.8 + 32;
+        var card = $("<div>").addClass("card bg-primary text-white");
+        var body = $("<div>").addClass("card-body p-2");
+        var temp =
+          $("<p>").addClass("card-text").text(
+          "Temp:  " +
+          ((response.list[i].main.temp - 273.15) * 1.8 + 32).toFixed(2) +
+          "°F");
         var icon = $("<img>").attr(
           "src",
           "http://openweathermap.org/img/w/" +
             response.list[i].weather[0].icon +
             ".png"
         );
-        $("#5date").append("<br>" + response.list[i].dt_txt);
-        $("#5currentimg").append(icon);
-        $("#5temp").append("<br>" + "Temp: " + temp.toFixed(2) + "°F");
-        $("#5humidity").append(
-          "<br>" + "Humidity: " + response.list[i].main.humidity + "%"
-        );
+        var date = response.list[i].dt_txt;
+        date = date.split(' ')[0];
+        var humidity =
+          $("<p>").addClass("card-text").text(
+          "Humidity: " +
+          response.list[i].main.humidity +
+          "%");
+        console.log(date);
+        column.append(card.append(body.append(date, icon, temp, humidity)));
+        $("#5day").append(column);
+        // $("#5date").append("<br>" + response.list[i].dt_txt);
+        // $("#5currentimg").append(icon);
+        // $("#5temp").append("<br>" + "Temp: " + temp.toFixed(2) + "°F");
+        // $("#5humidity").append(
+        //   "<br>" + "Humidity: " + response.list[i].main.humidity + "%"
+        // );
 
-        column.appendTo("#5day");
+        // column.appendTo("#5day");
       }
     }
   });
